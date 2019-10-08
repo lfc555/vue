@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>vue的一个简单的示例</title>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="type==='name'">
+        <label>用户名：</label>
+        <input type="text" placeholder="请输入用户名" key="name-input" />
+      </template>
+      <template v-else="type==='email'">
+        <label>邮箱</label>
+        <input type="text" placeholder="请输入邮箱" key="email-input" />
+      </template>
+      <button @click="handleToggleClick">切换</button>
+      <br />
+      <a :href="href" @click="handleClick('禁止打开',$event)">百度一下</a>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          type: "name",
+          href: "www.baidu.com"
+        },
+        methods: {
+          handleToggleClick: function() {
+            this.type = this.type == "name" ? "email" : "name";
+          },
+          handleClick: function(message, event) {
+            event.preventDefault();
+            window.alert(message);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

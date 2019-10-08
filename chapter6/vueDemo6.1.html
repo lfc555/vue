@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" @input="handleInput" placeholder="请输入内容" />
+      <span>{{ message }}</span>
+      <br />
+      <fieldset>
+        <legend>单选操作</legend>
+        <input type="radio" :checked="picked" />
+        <label>单选按钮</label>
+        <br />
+        <input type="radio" v-model="pickedV" value="html" id="html" />
+        <lable for="html">HTML</lable>
+        <input type="radio" v-model="pickedV" value="js" id="js" />
+        <lable for="js">js</lable>
+        <input type="radio" v-model="pickedV" value="vue" id="vue" />
+        <lable for="vue">vue</lable>
+        <h2>单选值：{{ pickedV }}</h2>
+      </fieldset>
+      <fieldset>
+        <legend>复选操作</legend>
+        <input type="checkbox" v-model="checked" id="checked" :value="123" />
+        <label>复选按钮</label>
+        {{ checked }}
+        <br />
+        <input type="checkbox" v-model="pickedC" value="html" id="html" />
+        <lable for="html">HTML</lable>
+        <input type="checkbox" v-model="pickedC" value="js" id="js" />
+        <lable for="js">js</lable>
+        <input type="checkbox" v-model="pickedC" value="vue" id="vue" />
+        <lable for="vue">vue</lable>
+        <h2>复选值：{{ pickedC }}</h2>
+      </fieldset>
+      <fieldset>
+        <legend>选择框</legend>
+        <select v-model="selected" multiple>
+          <option>html</option>
+          <option value="js">javascript</option>
+          <option>css</option>
+        </select>
+        <label>{{ selected }}</label>
+      </fieldset>
+      <fieldset>
+        <legend>复选操作-绑定值</legend>
+        <input
+          type="checkbox"
+          v-model="toogle"
+          id="checked"
+          :true-value="value1"
+          :false-value="value2"
+        />
+        <label>复选按钮</label>
+        <h2>{{ toogle }}</h2>
+        <h2>{{ value1 }}</h2>
+        <h2>{{ value2 }}</h2>
+      </fieldset>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          picked: true,
+          pickedV: "vue",
+          checked: false,
+          pickedC: ["vue", "html"],
+          selected: ["js"],
+          toogle: false,
+          value1: "a",
+          value2: "b"
+        },
+        methods: {
+          handleInput: function(e) {
+            this.message = e.target.value;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

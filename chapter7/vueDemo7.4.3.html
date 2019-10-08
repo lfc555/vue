@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>单个slot</title>
+  </head>
+  <body>
+    <div id="app">
+      <children-component>
+        <p>分发的内容</p>
+        <p>更多分发的内容</p>
+      </children-component>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      Vue.component("child-component", {
+        template:
+          "\
+        <div>\
+        <slot>\
+            <p>如果父组件里面没有插入内容，我将作为默认内容</p>\
+        </slot>\
+        </div>\
+        "
+      });
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>

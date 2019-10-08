@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <my-component></my-component>
+      <table>
+        <tbody is="table-component"></tbody>
+      </table>
+      <count-component></count-component>
+      <count-component></count-component>
+      <count-component></count-component>
+      <br />
+      <input type="text" v-model.trim="dynamicInfo" placeholder="请输入内容" />
+      <parent-component
+        :message="dynamicInfo"
+        warning-text="提示信息"
+      ></parent-component>
+      <count01-component :init-count="1"></count01-component>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      //component 01
+      Vue.component("my-component", {
+        //
+        template: "<div>这里是组件的内容</div>"
+      });
+      //component 0２ 父组件
+      Vue.component("parent-component", {
+        props: ["message", "warningText"],
+        template: "<div>{{warningText}}：{{message}}</div>"
+      });
+      //
+      Vue.component("count01-component", {
+        props: ["initCount"],
+        template: "<div>{{count}}</div>",
+        data: function(e) {
+          return { count: this.initCount + 100 };
+        }
+      });
+      //
+
+      var data = { counter: 0 };
+      var app = new Vue({
+        el: "#app",
+        data: {
+          dynamicInfo: ""
+        },
+        components: {
+          "table-component": {
+            template: "<tr><td>{{message}}</td><tr>",
+            //data 必须是方法，且 return 内容
+            data: function() {
+              return { message: "这里是table的组件内容" };
+            }
+          },
+          "count-component": {
+            template: '<button @click="counter++">{{counter}}</button>',
+            data: function() {
+              //引用一个外部的对象，共享数据
+              //return data;
+              return { counter: 0 };
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

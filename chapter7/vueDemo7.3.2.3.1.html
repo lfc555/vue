@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>父链和子链</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="handleRef">获取子组件的内容</button>
+      <p>{{ message }}</p>
+      <p id='P1' ref ="P">内容</p>
+      <my-component ref="comA"></my-component>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      Vue.component("my-component", {
+        template: '<button id="btn1" @click="handleEvent">派发事件</button>',
+        data: function() {
+          return { messageComA: "这是子组件的内容" };
+        },
+             methods: {
+          handleEvent: function() {
+            this.$parent.message = "来自子组件的问候";
+          }
+        }
+      });
+      //
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: ""
+        },
+        methods: {
+          handleRef: function() {
+            var msg = this.$refs.comA.messageComA;
+            console.log(msg);
+          }
+        },
+        mounted: function() {
+          console.log(document.getElementById("P1").getAttribute('ref'));
+          console.log(document.getElementById("btn1").getAttribute('ref'));
+        }
+      });
+      
+    </script>
+  </body>
+</htm

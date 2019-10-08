@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>validator验证</title>
+  </head>
+  <body>
+    <div id="app">
+      <validator-component :prop-A='100' prop-B='abc' :prop-C='false' :prop-D='200' :prop-E='[1,2,3]' :prop-F='99'></validator-component>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      Vue.component("validator-component", {
+        props: {
+          //必须是数字类型
+          propA: Number,
+          //必须是 字符串或数字
+          propB: [String, Number],
+          //布尔值 默认 true
+          propC: {
+            type: Boolean,
+            default: true
+          },
+          //数字 必传
+          propD: {
+            type: Number,
+            required: true
+          },
+          //数组 或对象  默认值必须用 返回一个方法
+          propE: {
+            type: Array,
+            default: function() {
+              return [];
+            }
+          },
+          //自定义验证函数
+          propF: {
+            type:Number,
+            validator: function(e) {
+              return e > 100;
+            }
+          }
+        },
+        template: "<div>propA：{{propA}}<br>propB：{{propB}}<br>propC：{{propC}}<br>propD：{{propD}}<br>propE：{{propE}}<br>propF：{{propF}}</div>"
+      });
+      var app = new Vue({
+        el: "#app"
+      });
+    </script>
+  </body>
+</html>

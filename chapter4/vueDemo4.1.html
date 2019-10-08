@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>vue的一个简单的示例</title>
+  </head>
+  <body>
+    <div id="app">
+      <button :class="classes" >按钮</button>
+      <div :style="styles">文件style</div>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          size: "large",
+          disabled: true,
+          styles:{
+            color:'red',
+            fontSize:'20px'
+          }
+        },
+        computed: {
+          classes: function() {
+            return [
+              "btn",
+              {
+                ["btn-" + this.size]: this.size !== "",
+                ["btn-disabled"]: this.disabled
+              }
+            ];
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>vue的一个简单的示例</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="key" placeholder="请输入关键字" @ />
+      <button @.enter="filterBooks">
+        查询
+      </button>
+      <ul>
+        <li v-for="(book,index) in books">{{ index }} - {{ book.name }}</li>
+      </ul>
+      <br />
+      <span v-for="(value,key,index) in user"
+        >{{ index }} - {{ key }}：{{ value }}<br
+      /></span>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          key: "",
+          books: [
+            { name: "《Vue.js实战》" },
+            { name: "《javaacript 语言精粹》" },
+            { name: "《javaacript 高级程序设计" }
+          ],
+          booksBak: [],
+          user: {
+            name: "吕方操",
+            gender: "男",
+            age: "35"
+          }
+        },
+        methods: {
+          filterBooks: function() {
+            var _this = this;
+            if (_this.booksBak.length == 0) {
+              _this.booksBak = app.books.slice();
+            }
+            if (_this.key !== "") {
+              app.books = app.books.filter(function(item) {
+                return item.name.match(_this.key);
+              });
+            } else {
+              app.books = _this.booksBak;
+            }
+          }
+        }
+      });
+      //
+      app.books.push({ name: "《C#高级编程》" });
+    </script>
+  </body>
+</html>
