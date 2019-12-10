@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>开发实践：输入框组件</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--使用 v-model 进行双向绑定 value -->
+      <input-number v-model='value' :max="10" :min="0"></input-number>
+    </div>
+    <!-- 引入vue.js -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <!-- 引入其他script -->
+    <script src="input-number.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

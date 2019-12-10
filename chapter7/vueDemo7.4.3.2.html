@@ -6,29 +6,41 @@
   </head>
   <body>
     <div id="app">
-      <list-component>
-        <template></template>
+      <list-component :books="books">
+        <template slot="book"  scope="props">
+          <li>{{ props.bookName }}</li>
+        </template>
       </list-component>
     </div>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <script>
       Vue.component("list-component", {
-        props:{
-          books:{
-            type:Array,
-            default:function(){
+        props: {
+          books: {
+            type: Array,
+            default: function() {
               return [];
             }
           }
-        }
+        },
         template:
           '\
-<ul>
-</ul>
-        '
+          <ul>\
+          <slot name="book"\
+          v-for="book in books"\
+           :book-name="book.name"\
+          ></slot>\
+          </ul>'
       });
       var app = new Vue({
-        el: "#app"
+        el: "#app",
+        data: {
+          books: [
+            { name: "《Vue.js》实战" },
+            { name: "《javascript》语言精奇" },
+            { name: "《javascript》高级程序设计" }
+          ]
+        }
       });
     </script>
   </body>
