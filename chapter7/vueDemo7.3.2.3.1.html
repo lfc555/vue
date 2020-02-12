@@ -16,9 +16,9 @@
       Vue.component("my-component", {
         template: '<button id="btn1" @click="handleEvent">派发事件</button>',
         data: function() {
-          return { messageComA: "这是子组件的内容" };
+          return { messageComA: "这是子组件的内容" }
         },
-             methods: {
+      methods: {
           handleEvent: function() {
             this.$parent.message = "来自子组件的问候";
           }
