@@ -7,7 +7,8 @@ Vue.component("tabs", {
        :class="tabCls(item)"\
        v-for="(item,index) in navList"\
        @click="handleChange(index)">\
-       {{item.label}}\
+       <span>{{item.label}}</span>\
+       <span class="closable" @click="closable(item)" v-show="item.closable">X</span>\
     </div>\
     </div>\
     <div class="tabs-content">\
@@ -44,8 +45,11 @@ Vue.component("tabs", {
       this.navList = [];
       var _this = this;
       this.getTabs().forEach(function(pane, index) {
+        console.log(pane.closable);
+
         _this.navList.push({
           label: pane.label,
+          closable: pane.closable,
           name: pane.name || index
         });
         if (!pane.name) pane.name = index;
@@ -64,6 +68,7 @@ Vue.component("tabs", {
         return (tab.show = tab.name === _this.currentValue);
       });
     },
+    //切换 tabs
     handleChange: function(index) {
       var nav = this.navList[index];
       var name = nav.name;
@@ -71,6 +76,12 @@ Vue.component("tabs", {
       //
       this.$emit("input", name);
       this.$emit("on-click", name);
+    },
+    //关闭tab
+    closable: function(index) {
+      var nav = this.navList[index];
+      var name = nav.name;
+      
     }
   },
   watch: {

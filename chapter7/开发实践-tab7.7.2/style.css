@@ -40,3 +40,8 @@
 .tabs-content {
   padding: 8px 0;
 }
+.tabs-bar .closable{
+    height:2px;
+    width:2px;
+    color:red;
+}

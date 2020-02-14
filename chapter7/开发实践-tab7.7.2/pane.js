@@ -9,6 +9,11 @@ Vue.component("pane", {
     label: {
       type: String,
       default: ""
+    },
+    //该tab是否可以被关闭，默认可以关闭
+    closable: {
+      type: String,
+      default: true
     }
   },
   template: '<div class="pane" v-show="show">\
