@@ -5,6 +5,7 @@ Vue.component("tabs", {
     <div class="tabs-bar">\
     <div \
        :class="tabCls(item)"\
+       v-show="tab" \
        v-for="(item,index) in navList"\
        @click="handleChange(index)">\
        <span>{{item.label}}</span>\

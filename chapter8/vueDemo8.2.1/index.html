@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="app" v-cloak>
-      <div class="main" v-clickoutside="handleClose">
+      <div class="main" v-clickoutside.asc="handleClose">
         <button @click="show=!show">点击显示下拉菜单</button>
         <div class="dropdown" v-show="show">
           <p>
