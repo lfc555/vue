@@ -5,6 +5,7 @@ var app = new Vue({
     timeM:1581861671000,
     timeH:1581854471000,
     timeD:1581782351000,
+    timeMonth:1579103951000,
     timeBefore: 1488930695721,
   }
 });
