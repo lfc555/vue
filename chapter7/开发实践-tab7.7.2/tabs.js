@@ -5,7 +5,6 @@ Vue.component("tabs", {
     <div class="tabs-bar">\
     <div \
        :class="tabCls(item)"\
-       v-show="tab" \
        v-for="(item,index) in navList"\
        @click="handleChange(index)">\
        <span>{{item.label}}</span>\
@@ -82,7 +81,6 @@ Vue.component("tabs", {
     closable: function(index) {
       var nav = this.navList[index];
       var name = nav.name;
-      
     }
   },
   watch: {
@@ -92,5 +90,8 @@ Vue.component("tabs", {
     currentValue: function() {
       this.updateStatus();
     }
+  },
+  mounted: function() {
+    console.log(this.navList);
   }
 });
