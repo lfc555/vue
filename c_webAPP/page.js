@@ -3,10 +3,8 @@ Vue.component("page", {
     //title
     title: { type: String }
   },
-  template:
-    '<div v-show="show">\
+  template: '<div v-show="show">\
     <div><slot></slot></div>\
-    <div>您选择或填写的内容：<br><span v-html="info">/span></div>\
     </div>',
   data: function() {
     return {
@@ -81,6 +79,9 @@ Vue.component("page", {
   watch: {
     title: function(val) {
       this.$parent.updatePage();
+    },
+    info: function(val) {
+      console.log(val);
     }
   }
 });
