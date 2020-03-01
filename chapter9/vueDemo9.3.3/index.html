@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>使用javascript代替模板功能</title>
+  </head>
+  <body>
+    <div id="app">
+      <ele :list="list"></ele>
+      <ele-Model></ele-Model>
+    </div>
+
+    <!-- 引入vue.js -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+      //for循环
+      Vue.component("ele", {
+        props: {
+          list: { type: Array }
+        },
+        render: function(createElement) {
+          //方式一： 使用for 循环
+          // if (this.list.length > 0) {
+          //   var nodes = [];
+          //   for (var i = 0; i < this.list.length; i++) {
+          //     nodes.push(createElement("p", this.list[i]));
+          //   }
+          // } else {
+          //   nodes.push(createElement("p", "列表内容为空"));
+          // }
+          // return createElement("div", nodes);
+          //方式二：使用 map
+          if (this.list.length > 0) {
+            return createElement(
+              "ul",
+              this.list.map(function(item) {
+                return createElement("li", item);
+              })
+            );
+          } else {
+            return createElement("p", "没有内容");
+          }
+        }
+      });
+      //render 实现 V-model
+      Vue.component("eleModel", {
+        render: function(createElement) {
+          var _this = this;
+
+          if (this.list.length > 0) {
+            var listNode = createElement(
+              "ul",
+              this.list.map(function(item) {
+                return createElement("li", item);
+              })
+            );
+          } else {
+            var listNode = createElement("p", "没有内容");
+          }
+
+          return createElement("div", [
+            listNode,
+            createElement("input", {
+              domProps: {
+                value: _this.value
+              },
+              on: {
+                input: function(event) {
+                  _this.value = event.target.value;
+                },
+                keyup: function(event) {
+                  if (event.keyCode !== 13) return;
+                  _this.list.push(event.target.value);
+                  event.target.value = "";
+                  _this.value = "";
+                }
+              }
+            }),
+            createElement("p", "value:" + _this.value)
+            //
+          ]);
+        },
+        data: function() {
+          return {
+            value: "",
+            list: []
+          };
+        }
+      });
+      var app = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            "《Vue.js实战》",
+            "《javascript高级程序设计》",
+            "《java语言精粹》"
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>
