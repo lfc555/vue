@@ -44,6 +44,20 @@
  + [参考2](https://blog.csdn.net/cominglately/article/details/89525175)
 
 *************************************************
+
+
+
+#### 问题6：webpack 打包 正式环境时，输出的内容中提示：  Entrypoint undefined = extract-text-webpack-plugin-output-filename等（但不影响功能）
+
+**解决方法**：  
++ module.exports增加配置stats: { children: false }即可解决；  
+  
+**参考地址**：  
+ + [参考1](https://www.cnblogs.com/guangzhou11/p/11427354.html)  
+
+*************************************************
+
+
 ## 记录其他网友的问题集
 + [webpack踩坑之路](https://www.jianshu.com/p/ceaf950a027b)
 + [html img src 图片不显示](https://blog.csdn.net/zc135565/article/details/104166781)

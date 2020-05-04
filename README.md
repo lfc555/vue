@@ -36,4 +36,7 @@ vue实战
 5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
 6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
 
+### 其他
++ [Markdown 完全入门（下）](https://sspai.com/post/36610)
++ [让 Markdown 写作更简单，免费极简编辑器：Typora](https://sspai.com/post/30292)
 
