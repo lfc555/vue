@@ -16,3 +16,9 @@ chapter11/vuex/node_modules
 chapter11/vuex/dist
 # 开发：npm run dev 或 生产：npm run build 根据配置 自动生成的文件
 chapter11/vuex/index_prod.html
+# node_modules ，直接 npm install 即可自动下载，不需要上传
+chapter11/vue-bus/node_modules
+# 开发：npm run dev 或 生产：npm run build 根据配置 自动生成的文件
+chapter11/vue-bus/dist
+# 开发：npm run dev 或 生产：npm run build 根据配置 自动生成的文件
+chapter11/vue-bus/index_prod.html
