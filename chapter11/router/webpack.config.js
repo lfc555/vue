@@ -16,7 +16,7 @@ var config = {
     path: path.join(__dirname, "./dist"), //打包后文件输出目录
     publicPath: "/dist", //资源引用的目录地址
     filename: "main.js", //输出的文件名称,
-    chunkFilename: "[name].[hash].chunk.js",
+    chunkFilename: "[name].[hash].chunk.js",//
   },
   module: {
     rules: [

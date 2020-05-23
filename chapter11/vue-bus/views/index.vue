@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     handleAddRandom(num) {
+    console.log("使用了 vue bus 插件");
       this.number += num;
     },
     handleIncrement() {

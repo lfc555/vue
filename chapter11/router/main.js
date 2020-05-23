@@ -9,6 +9,7 @@ import VueRouter from "vue-router";
 //导入 app.vue组件
 import App from "./app.vue";
 
+//使用vue路由组件，不同的请求动态加载不同的组件
 Vue.use(VueRouter);
 //01 定义常量 路由数组
 const Routers = [
@@ -34,6 +35,7 @@ const Routers = [
     component: (resolve) => require(["./views/user.vue"], resolve),
   },
   {
+    //定义默认页面
     path: "*",
     redirect: "./index", //指 index.vue页面
   },
@@ -51,13 +53,19 @@ router.beforeEach((to, from, next) => {
 
   //可以用来判断用户是否 已经登录，没有登录则跳转到登录页面
   console.log(to.path);
-  if (to.path !== "/index") {
-    if (window.localStorage.getItem("token")) {
-      console.log("用户已经登录，正常跳转");
-      next();
+
+  if (false) {
+    if (to.path !== "/index") {
+      if (window.localStorage.getItem("token")) {
+        console.log("用户已经登录，正常跳转");
+        next();
+      } else {
+        console.log("用户没有登录，跳转到首页");
+        next("/index");
+        //next(false);//可以取消导航
+      }
     } else {
-      console.log("用户没有登录，跳转到首页");
-      next("/index");
+      next();
     }
   }
   else{
@@ -66,7 +74,7 @@ router.beforeEach((to, from, next) => {
 });
 //
 router.afterEach((to, from, next) => {
-  //window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 });
 
 //创建Vue根实例
