@@ -61,3 +61,5 @@
 ## 记录其他网友的问题集
 + [webpack踩坑之路](https://www.jianshu.com/p/ceaf950a027b)
 + [html img src 图片不显示](https://blog.csdn.net/zc135565/article/details/104166781)
++ [《Vue.js实战》源码及答疑](https://github.com/icarusion/vue-book)
++ [《Vue.js实战》 笔记](https://github.com/zyf711/vue-combat-book)
