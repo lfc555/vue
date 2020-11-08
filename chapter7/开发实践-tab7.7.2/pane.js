@@ -3,38 +3,38 @@ Vue.component("pane", {
   props: {
     //标签页的唯一标识
     name: {
-      type: String
+      type: String,
     },
     //标签标题
     label: {
       type: String,
-      default: ""
+      default: "",
     },
     //该tab是否可以被关闭，默认可以关闭
     closable: {
       type: String,
-      default: true
-    }
+      default: true,
+    },
   },
   template: '<div class="pane" v-show="show">\
 <slot></slot>\
     </div>',
-  data: function() {
+  data: function () {
     return {
-      show: true
+      show: true,
     };
   },
   methods: {
-    updateNav: function() {
+    updateNav: function () {
       this.$parent.updateNav(); //除了tab ，其他位置尽量不要使用$parent操作父链
-    }
+    },
   },
   watch: {
-    label: function() {
+    label: function () {
       this.updateNav();
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     this.updateNav();
-  }
+  },
 });

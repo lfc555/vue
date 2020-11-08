@@ -8,7 +8,7 @@ Vue.component("tabs", {
        v-for="(item,index) in navList"\
        @click="handleChange(index)">\
        <span>{{item.label}}</span>\
-       <span class="closable" @click="closable(item)" v-show="item.closable">X</span>\
+       <span class="closable" @click="closable(index)" v-show="item.closable">X</span>\
     </div>\
     </div>\
     <div class="tabs-content">\
@@ -18,39 +18,39 @@ Vue.component("tabs", {
     ',
   props: {
     value: {
-      type: [String, Number]
-    }
+      type: [String, Number],
+    },
   },
-  data: function() {
+  data: function () {
     return {
       currentValue: this.value,
-      navList: []
+      navList: [],
     };
   },
   methods: {
-    tabCls: function(item) {
+    tabCls: function (item) {
       return [
         "tabs-tab",
         {
-          "tabs-tab-active": item.name === this.currentValue
-        }
+          "tabs-tab-active": item.name === this.currentValue,
+        },
       ];
     },
-    getTabs: function() {
-      return this.$children.filter(function(item) {
+    getTabs: function () {
+      return this.$children.filter(function (item) {
         return item.$options.name === "pane"; //通过遍历子组件，找到所有 name='pane'的子组件
       });
     },
-    updateNav: function() {
+    updateNav: function () {
       this.navList = [];
       var _this = this;
-      this.getTabs().forEach(function(pane, index) {
+      this.getTabs().forEach(function (pane, index) {
         console.log(pane.closable);
 
         _this.navList.push({
           label: pane.label,
           closable: pane.closable,
-          name: pane.name || index
+          name: pane.name || index,
         });
         if (!pane.name) pane.name = index;
         if (index === 0) {
@@ -61,15 +61,15 @@ Vue.component("tabs", {
       });
       this.updateStatus();
     },
-    updateStatus: function() {
+    updateStatus: function () {
       var tabs = this.getTabs();
       var _this = this;
-      tabs.forEach(function(tab) {
+      tabs.forEach(function (tab) {
         return (tab.show = tab.name === _this.currentValue);
       });
     },
     //切换 tabs
-    handleChange: function(index) {
+    handleChange: function (index) {
       var nav = this.navList[index];
       var name = nav.name;
       this.currentValue = name;
@@ -78,20 +78,20 @@ Vue.component("tabs", {
       this.$emit("on-click", name);
     },
     //关闭tab
-    closable: function(index) {
+    closable: function (index) {
       var nav = this.navList[index];
       var name = nav.name;
-    }
+    },
   },
   watch: {
-    value: function(val) {
+    value: function (val) {
       this.currentValue = val;
     },
-    currentValue: function() {
+    currentValue: function () {
       this.updateStatus();
-    }
+    },
   },
-  mounted: function() {
+  mounted: function () {
     console.log(this.navList);
-  }
+  },
 });
