@@ -11,13 +11,13 @@ Vue.directive("clickoutside", {
     //
     el.__vueClickOutside__ = documentHandler;
     document.addEventListener("click", documentHandler);
-    if (binding.modifiers.asc) {
+    if (binding.modifiers.esc) {
       document.addEventListener("keyup", documentHandler);
     }
   },
   unbind: function(el, binding) {
     document.removeEventListener("click", el.__vueClickOutside__);
-    if (binding.modifiers.asc) {
+    if (binding.modifiers.esc) {
       document.removeEventListener("keyup", documentHandler);
     }
     delete el.__vueClickOutside__;
