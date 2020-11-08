@@ -46,20 +46,7 @@ Vue.component("radio", {
   watch: {
     picked: function(val, oldV) {
       this.$parent.radioData(this.id, val, oldV, this.optionsList);
-      //以下内容放到了父page中
-      // if (!oldV && val) {
-      //   this.$parent.updateSubmitStatus(true);
-      // }
-      // if (oldV && !val) {
-      //   this.$parent.updateSubmitStatus(false);
-      // }
-      // if (val) {
-      //   var findItem = this.optionsList.find(function(item) {
-      //     return item.value == val;
-      //   });
-      //   console.log(findItem.text);
-      //   this.$parent.info = findItem.text + "（" + val + "）";
-      // }
+
     }
   }
 });
