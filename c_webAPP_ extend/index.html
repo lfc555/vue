@@ -1,0 +1,105 @@
+<!-- 项目：调查问卷WebApp 。
+描述：制作一个简单的调查问卷HTML 5 小应用，每页有一道题目，题目可以是单选题、多选题、填写题等 
+
+1、page: 组件+slot：每一个页面，分三部分：标题、内容、操作
+2、radio 单选按钮组件
+3、checkbox 多选按钮组件 
+4、textareaEnhance: 文本域增强组件
+5、btn:按钮组件
+
+实现方法：参考 tab 
+其他网络参考：
+https://blog.csdn.net/lzb348110175/article/details/88999699
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>问卷调查</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <webapp>
+        <div name="content">
+          <page title="1、请问您的性别是：" name="page1">
+            <radio :options-list="radioList" id="sex" valid></radio>
+          </page>
+          <page title="2、请选择您的兴趣爱好："  name="page2">
+            <checkbox :options-list="checkboxList" id="in`terest" :less-length="3" valid></checkbox>
+            <div>其他兴趣（单选）：</div>
+            <radio :options-list="otherInterestList" id="otherInterest" valid></radio>
+            <div>自定义兴趣爱好(可选):</div>
+            <txtarea :min-Length="5" id="customInterest"></txtarea>
+          </page>
+          <page title="3、请介绍一下你自己："  name="page3">
+            <txtarea :min-Length="10" id="introduceSelf" valid></txtarea>
+          </page>
+          <page title="4、还有其他需要补充的内容，请在这里完善："  name="page4">
+            <txtarea :min-Length="10" id="otherInfo"></txtarea>
+          </page>
+        </div>
+      </webapp>
+    </div>
+
+    <!-- 引入vue.js -->
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <!-- 引入其他script -->
+    <script src="btn.js"></script>
+    <script src="checkbox.js"></script>
+    <script src="radio.js"></script>
+    <script src="textarea.js"></script>
+    <script src="page.js"></script>
+    <script src="webapp.js"></script>
+
+    <script type="text/javascript">
+      var app = new Vue({
+        el: "#app",
+        data: {
+          radioList: [
+            {
+              value: "1",
+              text: "男"
+            },
+            {
+              value: "0",
+              text: "女"
+            },
+            {
+              value: "-1",
+              text: "保密"
+            }
+          ],
+          otherInterestList: [
+            {
+              value: "1",
+              text: "健身"
+            },
+            {
+              value: "2",
+              text: "旅游"
+            }
+          ],
+          checkboxList: [
+            {
+              value: "1",
+              text: "看书"
+            },
+            {
+              value: "2",
+              text: "游泳"
+            },
+            {
+              value: "3",
+              text: "跑步"
+            },
+            {
+              value: "4",
+              text: "看电影"
+            }
+          ]
+        }
+      });
+    </script>
+  </body>
+</html>
