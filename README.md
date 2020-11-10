@@ -40,4 +40,6 @@ vue实战
 + [Markdown 完全入门（下）](https://sspai.com/post/36610)
 + [让 Markdown 写作更简单，免费极简编辑器：Typora](https://sspai.com/post/30292)
 + [NPM install -save 和 -save-dev 傻傻分不清](https://www.limitcode.com/detail/59a15b1a69e95702e0780249.html)
++ [《Vue.js实战》源码及答疑](https://github.com/icarusion/vue-book)
++ [《Vue.js实战》 网友笔记](https://github.com/zyf711/vue-combat-book)
 
