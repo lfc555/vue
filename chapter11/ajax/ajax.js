@@ -6,7 +6,7 @@ const install = function(Vue) {
     //02 data
     let data = [];
     for (let i in options.data) {
-      data.push(encodeURIComponent(i) + "=" + encodeURIComponent(data[i]));
+      data.push(encodeURIComponent(i) + "=" + encodeURIComponent(options.data[i]));
     }
     data = data.join("&");
     //请求对象

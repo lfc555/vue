@@ -50,7 +50,7 @@ export default {
       return this.$store.getters.filteredList;
     },
     listCount() {
-      return this.$store.getters.listCount;
+      return this.$store.getters.listCount;//getter 依赖其他 getter
     }
   },
   methods: {
