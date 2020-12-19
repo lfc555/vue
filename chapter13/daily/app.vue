@@ -32,35 +32,38 @@
       <template v-if="type === 'recommend'">
         <div v-for="list in recommendList">
           <div class="daily-date">{{ formatDay(list.date) }}</div>
-          <Item v-for="item in list.stories" :data="item" :key="item.id"></Item>
+          <Item v-for="item in list.stories" :data="item" :key="item.id" @click.native="handleClick(item.id)"></Item>
         </div>
       </template>
       <template v-if="type === 'daily'">
         <div v-for="list in list">
-          <Item v-for="item in list.stories" :data="item" :key="item.id"></Item>
+          <Item v-for="item in list.stories" :data="item" :key="item.id"  @click.native="handleClick(item.id)"></Item>
         </div>
       </template>
     </div>
     <!-- 右文章详细 -->
-    <daily-article></daily-article>
+    <daily-article :id="articleId"></daily-article>
   </div>
 </template>
 <script>
 //import
 import $ from "./libs/util";
+//导入组件
 import Item from "./components/item.vue";
+import dailyArticle from "./components/daily-article.vue";
 
 export default {
-  components: { Item }, //局部组件
+  components: { Item, dailyArticle }, //局部组件
   data: function () {
     return {
       themes: [],
-      showThems: false,
+      showThemes: false,
       type: "recommend",
       recommendList: [],
       dailyTime: $.getTodayTime(),
       isLoading: false,
       themeId: 0,
+      articleId:0
     };
   },
   methods: {
@@ -115,7 +118,7 @@ export default {
     //获取到 dom
     const $list = this.$refs.list;
     //临听中栏的滚动事件
-    $list.addEventListene("scroll", () => {
+    $list.addEventListener("scroll", () => {
       //在“主题日报” 或正在加载推荐列表时停止操作
       if (this.type === "daily" || this.isLoading) {
         return;

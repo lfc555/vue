@@ -18,10 +18,10 @@ Util.ajax.interceptors.response.use((res) => {
 //获取今天的时间戳
 Util.getTodayTime = function() {
   const date = new Date();
-  date.setHours(O);
-  date.setMinutes(O);
-  date.setSeconds(O);
-  date.setMilliseconds(O);
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
   return date.getTime();
 };
 //
@@ -32,7 +32,7 @@ Util.prevDay = function(timestamp = new Date().getTime()) {
   const month =
     date.getMonth() + 1 < 10
       ? "0" + (date.getMonth() + 1)
-      : date.getMonth() + l;
+      : date.getMonth() + 1;
   const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
   return year + month + day;
 };

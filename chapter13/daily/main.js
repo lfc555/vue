@@ -1,6 +1,5 @@
 //第一种
-// import './style.css'
-// document.getElementById('app').innerHTML='hello webpack'
+import './style.css'
 //第二种 使用vue
 //导入Vue框架
 import Vue from 'vue'
