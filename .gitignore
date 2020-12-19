@@ -35,3 +35,7 @@ chapter13/daily/node_modules
 chapter13/daily/dist
 # 开发：npm run dev 或 生产：npm run build 根据配置 自动生成的文件
 chapter13/daily/index_prod.html
+# node_modules ，直接 npm install 即可自动下载，不需要上传
+node_modules
+# dist ，不需要上传
+dist
