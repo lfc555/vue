@@ -42,4 +42,6 @@ vue实战
 + [NPM install -save 和 -save-dev 傻傻分不清](https://www.limitcode.com/detail/59a15b1a69e95702e0780249.html)
 + [《Vue.js实战》源码及答疑](https://github.com/icarusion/vue-book)
 + [《Vue.js实战》 网友笔记](https://github.com/zyf711/vue-combat-book)
-
++ ### 第三方开源库
++ [HTTP 库axios](https://github.com/axios/axios)
++ [SSR nuxt](https://github.com/nuxt/nuxt.js)
