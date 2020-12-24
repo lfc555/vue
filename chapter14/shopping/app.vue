@@ -8,6 +8,7 @@
         </router-link>
       </div>
     </div>
+    <!-- 根据路由动态加载数据 -->
     <router-view></router-view>
   </div>
 </template>
